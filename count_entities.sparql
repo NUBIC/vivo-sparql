@@ -1,0 +1,32 @@
+# count_entities.sparql
+# 
+# Count high-level entities in VIVO.  One sub-query per count.
+#
+PREFIX bibo:     <http://purl.org/ontology/bibo/>
+PREFIX foaf:     <http://xmlns.com/foaf/0.1/>
+
+SELECT ?orgs ?people ?publications 
+WHERE {
+
+  {
+  SELECT (COUNT(DISTINCT ?uri) AS ?orgs)
+  WHERE {
+    ?uri a foaf:Organization .
+    }
+  }
+
+  {
+  SELECT (COUNT(DISTINCT ?uri) AS ?people)
+  WHERE {
+    ?uri a foaf:Person .
+    }
+  }
+
+  {
+  SELECT (COUNT(DISTINCT ?uri) AS ?publications)
+  WHERE {
+    ?uri a bibo:Document .
+    }
+  }
+  
+}

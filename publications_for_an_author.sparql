@@ -1,0 +1,21 @@
+# publications_for_an_author.sparql
+# 
+# This query returns all publications for a given author
+# 
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX vitro:    <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#>
+PREFIX bibo:     <http://purl.org/ontology/bibo/>
+PREFIX foaf:     <http://xmlns.com/foaf/0.1/>
+PREFIX vcard:    <http://www.w3.org/2006/vcard/ns#>
+PREFIX vivo:     <http://vivoweb.org/ontology/core#> 
+
+SELECT distinct ?pub ?title
+WHERE {
+    ?authorship rdf:type vivo:Authorship .
+    ?authorship vivo:relates <http://vivo.northwestern.edu/individual/ne994246efd> .
+    ?authorship vivo:relates ?pub .
+    ?pub rdf:type bibo:Document .
+    ?pub rdfs:label ?title 
+}
+ORDER BY ASC(?title)

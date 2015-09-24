@@ -1,0 +1,12 @@
+# publication_count.sparql
+#
+# Get the number of times a person has been an author
+#
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX vivo:    <http://vivoweb.org/ontology/core#>
+
+SELECT (count(?Authorship1) as ?cnt)
+WHERE {
+    ?Authorship1 rdf:type vivo:Authorship .
+    ?Authorship1 vivo:relates <http://vivo.northwestern.edu/individual/ne994246efd>
+}

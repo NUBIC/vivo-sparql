@@ -1,0 +1,16 @@
+# publication_type.sparql
+# 
+# Get the number of articles published by an individual for 
+# a particular rdf:type - in this case bibo:Letter
+#
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX bibo:     <http://purl.org/ontology/bibo/>
+PREFIX vivo:     <http://vivoweb.org/ontology/core#>
+     
+SELECT (count(?Publication1) as ?bibo_letter_count)
+WHERE {
+  ?Publication1 rdf:type bibo:Letter .
+  ?Authorship1 rdf:type vivo:Authorship .
+  ?Authorship1 vivo:relates <http://vivo.northwestern.edu/individual/ne994246efd> .
+  ?Authorship1 vivo:relates ?Publication1
+}

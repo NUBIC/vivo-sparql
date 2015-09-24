@@ -1,0 +1,16 @@
+# uris.sparql
+# 
+# Retrieve all the vivo:FacultyMembers in the database
+#
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX vivo:     <http://vivoweb.org/ontology/core#>
+PREFIX vlocal:   <http://vivo.northwestern.edu/ontology/vlocal#>
+
+SELECT distinct ?faculty_member ?name ?netid
+WHERE {
+  ?faculty_member rdf:type vivo:FacultyMember .
+  ?faculty_member rdfs:label ?name .
+  ?faculty_member vlocal:netID ?netid .
+}
+ORDER BY ASC(?name)

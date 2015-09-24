@@ -1,0 +1,17 @@
+# publications_by_year.sparql
+# 
+# Get the number of articles published in a particular year
+#
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX bibo:     <http://purl.org/ontology/bibo/>
+PREFIX vivo:     <http://vivoweb.org/ontology/core#>
+     
+SELECT (count(?pub) as ?cnt)
+WHERE {
+    ?pub rdf:type bibo:Article .
+    ?pub vivo:dateTimeValue ?dtv .
+    ?dtv rdf:type vivo:DateTimeValue .
+    ?dtv vivo:dateTime ?dt .
+    FILTER (str(?dt) >= '2015-01-01T:00:00:00')
+    FILTER (str(?dt) <= '2015-12-31T:00:00:00')
+}
