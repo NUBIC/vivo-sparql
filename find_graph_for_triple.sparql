@@ -1,0 +1,14 @@
+# find_graph_for_triple.sparql
+#
+# Find the graph that contains the specified triple
+#
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX vivo:     <http://vivoweb.org/ontology/core#>
+
+SELECT ?g
+WHERE
+{
+  GRAPH ?g {
+    <http://vivo.northwestern.edu/individual/ne994246efd> rdf:type vivo:FacultyMember .
+  }
+}

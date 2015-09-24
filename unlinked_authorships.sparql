@@ -1,0 +1,13 @@
+# unlinked_authorships.sparql
+#
+# Find authorships that do not link to people
+#
+PREFIX foaf:     <http://xmlns.com/foaf/0.1/>
+PREFIX vivo:     <http://vivoweb.org/ontology/core#> 
+
+SELECT ?uri
+WHERE
+{
+  ?uri a vivo:Authorship .
+  FILTER NOT EXISTS {?uri vivo:relates ?author . ?author a foaf:Person .}
+}

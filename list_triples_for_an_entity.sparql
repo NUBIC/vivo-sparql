@@ -1,0 +1,8 @@
+# list_triples_for_an_entity.sparql
+#
+# List the predicates and objects of all triples for a specified subject
+#
+SELECT ?p ?o
+WHERE {
+    <http://vivo.northwestern.edu/individual/ne994246efd>  ?p ?o .
+}
